@@ -44,7 +44,7 @@ public class Exprosion : MonoBehaviour {
 
             aa.transform.SetPositionAndRotation(new Vector3(this.transform.position.x, this.transform.position.y + (0.5f), this.transform.position.z), this.transform.rotation);
 
-            Destroy(Player);
+           // Destroy(Player);
 
             Player = null;
         }

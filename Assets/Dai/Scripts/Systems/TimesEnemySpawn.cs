@@ -61,6 +61,8 @@ public class TimesEnemySpawn : MonoBehaviour
             //======================================================================================
             //  出撃処理
             //======================================================================================
+            if (this.EnemyType >= Prefabs.Length)
+                return;
             //敵の出撃
             GameObject.Instantiate(Prefabs[EnemyType], new Vector3(0.0f, 0.0f, SpawnPositionZ), new Quaternion(0, 0, 0, 0));
 

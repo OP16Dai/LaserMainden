@@ -5,12 +5,6 @@ using UnityEngine.SceneManagement;
 public class Clear : MonoBehaviour
 {
 
-    //======================================================================================
-    //
-    //  ステージクリア処理
-    //      
-    //======================================================================================
-
     //プレイヤー保管
     GameObject Player;
 
@@ -53,6 +47,7 @@ public class Clear : MonoBehaviour
 
     void clear()
     {
+        //シーンの遷移
         SceneManager.LoadScene("StageSelectScene");
     }
 }

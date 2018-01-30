@@ -68,7 +68,7 @@ public class PlayerMoveSample : MonoBehaviour
 
 
         // ラベルを表示する
-        GUI.Label(new Rect(20, 20, 100, 50), a);
+       // GUI.Label(new Rect(20, 20, 100, 50), a);
     }
 
     void Update()
@@ -256,13 +256,46 @@ public class PlayerMoveSample : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             animator.SetBool(key_isJump, false);
             animator.SetBool(key_isRun, false);
             animator.SetBool(key_isSliding, true);
 
          
+        }else if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            animator.SetBool(key_isJump, true);
+            animator.SetBool(key_isRun, false);
+            animator.SetBool(key_isSliding, false);
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            moveX = 1.0f;
+
+            Vector3 direction = new Vector3(moveX, 0, moveZ);
+            if (direction.magnitude > 0.01f)
+            {
+                Quaternion myQ = Quaternion.LookRotation(direction);
+                float step = rotateSpeed * Time.deltaTime;
+
+                this.transform.rotation = Quaternion.Lerp(transform.rotation, myQ, step);
+
+            }
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            moveX = -1.0f;
+
+            Vector3 direction = new Vector3(moveX, 0, moveZ);
+            if (direction.magnitude > 0.01f)
+            {
+                Quaternion myQ = Quaternion.LookRotation(direction);
+                float step = rotateSpeed * Time.deltaTime;
+
+                this.transform.rotation = Quaternion.Lerp(transform.rotation, myQ, step);
+
+            }
         }
 
 
