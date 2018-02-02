@@ -98,7 +98,7 @@ public class Stage_System : MonoBehaviour {
         }
     
         //GUIラベルの位置の設定
-        this.GUIRect = new Rect(170,80,0,60);
+        this.GUIRect = new Rect(170,140,0,0);
 
         //GUIスタイルの作成
         this.GUI_Style = new GUIStyle();
