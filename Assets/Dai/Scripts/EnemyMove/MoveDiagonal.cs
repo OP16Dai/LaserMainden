@@ -32,7 +32,7 @@ public class MoveDiagonal : MonoBehaviour {
     // Update is called once per frame
     //============================================================
     void Update () {
-        
+        /*
         //移動処理
         MoveTo();
 
@@ -41,6 +41,7 @@ public class MoveDiagonal : MonoBehaviour {
 
         //時間経過
         CountTime++;
+        */
     }
 
 
@@ -67,5 +68,17 @@ public class MoveDiagonal : MonoBehaviour {
 
             CountTime = 0;
         }
+    }
+
+    void FixedUpdate()
+    {
+        //移動処理
+        MoveTo();
+
+        //一定時間で向きを逆にする
+        ComeBack();
+
+        //時間経過
+        CountTime++;
     }
 }

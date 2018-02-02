@@ -16,6 +16,11 @@ public class RotateVirtical : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    void FixedUpdate()
+    {
         //横に変更
         transform.Rotate(new Vector3(RotateSpeed, 0, 0));
     }

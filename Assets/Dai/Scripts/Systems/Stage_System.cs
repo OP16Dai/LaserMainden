@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 
 public class Stage_System : MonoBehaviour {
 
@@ -22,21 +22,58 @@ public class Stage_System : MonoBehaviour {
 
     //プレイヤー保管
     GameObject Player;
+    //ロボット
+    GameObject robot;
 
     //プレイヤーがゲームをクリアしたかどうか
     bool clear = false;
 
-    
+    //GUILabelの設定を保存する変数
+    private GUIStyle GUI_Style;
+    private GUIStyleState GUI_StyleState;
+    //GUIラベルの位置
+    private Rect GUIRect;
+    //ラベルで表示する文字列
+    private string DrawString = "";
 
-    
+    public Material mate;
+
+    int counter = 0;
+
+   
+
+    void OnGUI()
+    {
+        
+
+       
+       
+        GUI.Label(GUIRect, this.DrawString, GUI_Style);
 
 
+        
+       
+
+
+
+        
+        
+    }
+
+  
     // Use this for initialization
     void Start()
     {
+
+
         //プレイヤー
         Player = GameObject.FindGameObjectWithTag("Player");
- 
+
+       
+        
+
+
+
         //BGMSoundObjectが存在したら
         if (GameObject.FindGameObjectWithTag("BgmSoundObject") != null)
         {
@@ -54,11 +91,26 @@ public class Stage_System : MonoBehaviour {
                 //再生
                 this.AS.Play();
 
+                
+
             }
             
         }
+    
+        //GUIラベルの位置の設定
+        this.GUIRect = new Rect(170,80,0,60);
 
+        //GUIスタイルの作成
+        this.GUI_Style = new GUIStyle();
+        //GUIの状態方法の作成
+        this.GUI_StyleState = new GUIStyleState();
+        //GUIの設定
+        this.GUI_Style.fontSize = 80;
+        this.GUI_Style.fontStyle = FontStyle.BoldAndItalic;
+        this.GUI_StyleState.textColor = Color.green;
+        this.GUI_Style.normal = this.GUI_StyleState;
 
+        
     }
 
     // Update is called once per frame
@@ -81,10 +133,25 @@ public class Stage_System : MonoBehaviour {
             //音量を下げる
             this.AS.volume -= 0.004f;
 
+            //文字の設定
+            this.DrawString = "Success";
+
         }
+
+        if(Time.timeScale != 1.0f)
+        {
+            counter++;
+
+            if(counter > 300)
+            {
+                Time.timeScale = 1.0f;
+                this.AS.UnPause();
+            }
+        }
+        
     }
 
-
+    //ゲームクリア処理
     private void OnTriggerEnter(Collider collision)
     {
         //GameFinish関数を実行
@@ -111,5 +178,12 @@ public class Stage_System : MonoBehaviour {
 
         //シーンの遷移
         SceneManager.LoadScene("StageSelectScene");
+    }
+
+   //アイテムを保存する関数
+   void SaveItems(string ItemName)
+    {
+        PlayerPrefs.SetString(ItemName,ItemName);
+        PlayerPrefs.Save();
     }
 }

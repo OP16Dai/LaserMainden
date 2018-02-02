@@ -14,6 +14,11 @@ public class RotateSide : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        
+    }
+
+    void FixedUpdate()
+    {
         //横に変更
         transform.Rotate(new Vector3(0, 0, RotateSpeed));
     }

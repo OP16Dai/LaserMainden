@@ -15,12 +15,18 @@ public class UpDown : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+        
+    }
 	
 	// Update is called once per frame
 	void Update () {
+        
+       
+        
+    }
 
+   void FixedUpdate()
+    {
         //上限位置に来たら向き変更
         if (transform.position.y >= TopLimit)
         {
@@ -43,4 +49,6 @@ public class UpDown : MonoBehaviour {
         //1フレームごとに位置を変更(Y軸)
         transform.position = new Vector3(transform.position.x, transform.position.y + MoveValue, transform.position.z);
     }
+
+
 }

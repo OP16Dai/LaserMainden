@@ -23,8 +23,7 @@ public class Basic : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //移動処理
-        MoveTo();
+       
     }
 
     //移動処理
@@ -32,5 +31,11 @@ public class Basic : MonoBehaviour {
     {
         //1フレームごとに位置を変更
         transform.position = new Vector3(transform.position.x + m_moveX/60, transform.position.y + m_moveY/60, transform.position.z + m_moveZ/60);
+    }
+
+    void FixedUpdate()
+    {
+        //移動処理
+        MoveTo();
     }
 }

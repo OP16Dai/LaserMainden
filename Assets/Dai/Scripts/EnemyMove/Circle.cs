@@ -34,6 +34,11 @@ public class Circle : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+      
+	}
+
+    void FixedUpdate()
+    {
         //====================================================
         //  回転処理
         //====================================================
@@ -41,5 +46,5 @@ public class Circle : MonoBehaviour {
         this.transform.position = new Vector3(radius * Mathf.Sin(angle) + m_startPosX, radius * Mathf.Cos(angle) + m_startPosY, m_startPosZ);
         //角度変更
         angle += speed;
-	}
+    }
 }

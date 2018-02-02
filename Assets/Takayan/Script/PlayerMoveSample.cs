@@ -50,6 +50,21 @@ public class PlayerMoveSample : MonoBehaviour
 
     string a = "none";
 
+
+    //カウンタ
+    int count = 0;
+
+
+
+    public Material mate;
+
+
+
+
+
+
+
+
     void Start()
     {
         //自分に設定されているARigidbodyコンポーネントを取得する
@@ -57,20 +72,12 @@ public class PlayerMoveSample : MonoBehaviour
         //自分に設定されているAnimatorコンポーネントを取得する
         this.animator = GetComponent<Animator>();
 
-      
+        
 
 
     }
 
-    void OnGUI()
-    {
-       
-
-
-        // ラベルを表示する
-       // GUI.Label(new Rect(20, 20, 100, 50), a);
-    }
-
+  
     void Update()
     {
 
@@ -299,6 +306,20 @@ public class PlayerMoveSample : MonoBehaviour
         }
 
 
+
+        if(rigidbody.isKinematic == true)
+        {
+            count++;
+            if(count > 180)
+            {
+                rigidbody.isKinematic = false;
+
+                GameObject.FindGameObjectWithTag("Robot").gameObject.GetComponent<Renderer>().material = mate;
+            }
+        }
+
+
+        
     }
 
     void FixedUpdate()
@@ -307,4 +328,25 @@ public class PlayerMoveSample : MonoBehaviour
         
     }
 
+    
+    void OnCollisionEnter(Collision collision)
+    {
+        
+        if (collision.gameObject.tag == "Item")
+        {
+            
+            SaveItems(collision.gameObject.name);
+           
+        }
+
+
+    }
+
+    //アイテムを保存する関数
+    void SaveItems(string ItemName)
+    {
+        PlayerPrefs.SetString(ItemName, ItemName);
+        PlayerPrefs.Save();
+       
+    }
 }
