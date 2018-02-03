@@ -263,20 +263,20 @@ public class PlayerMoveSample : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.S))
         {
             animator.SetBool(key_isJump, false);
             animator.SetBool(key_isRun, false);
             animator.SetBool(key_isSliding, true);
 
          
-        }else if (Input.GetKeyDown(KeyCode.UpArrow))
+        }else if (Input.GetKeyDown(KeyCode.W))
         {
             animator.SetBool(key_isJump, true);
             animator.SetBool(key_isRun, false);
             animator.SetBool(key_isSliding, false);
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.D))
         {
             moveX = 1.0f;
 
@@ -290,7 +290,7 @@ public class PlayerMoveSample : MonoBehaviour
 
             }
         }
-        else if (Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.A))
         {
             moveX = -1.0f;
 
