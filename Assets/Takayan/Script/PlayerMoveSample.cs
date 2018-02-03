@@ -81,13 +81,14 @@ public class PlayerMoveSample : MonoBehaviour
     void Update()
     {
 
-        
+
 
         //---------------------------------ここから入力処理---------------------------------
-
+        
 
         if (this.transform.position.x > RightBoundary && this.rightKey != false)
         {
+            
             this.rightKey = false;
         }
         else if (this.transform.position.x < RightBoundary && this.rightKey != true)
@@ -276,7 +277,7 @@ public class PlayerMoveSample : MonoBehaviour
             animator.SetBool(key_isRun, false);
             animator.SetBool(key_isSliding, false);
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D) && this.rightKey == true)
         {
             moveX = 1.0f;
 
@@ -290,7 +291,7 @@ public class PlayerMoveSample : MonoBehaviour
 
             }
         }
-        else if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(KeyCode.A) && this.leftKey == true)
         {
             moveX = -1.0f;
 
